@@ -25,9 +25,15 @@ SECRET_KEY = 'django-insecure-47c0!-!yc$@ssnrimcq4=1^(&fk7=ea4oa%+m9q0zj_%e9%z$&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:3000',
+    # Add other trusted origins if needed
+]
+CSRF_COOKIE_HTTPONLY = False
+
 ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.3000',
+    'http://127.0.0.1:3000',
     'http://127.0.0.1',
     'http://0.0.0.0',
 ]
@@ -46,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'UserApi',
+    'PredictorModel'
 ]
 
 MIDDLEWARE = [
@@ -64,7 +71,7 @@ ROOT_URLCONF = 'backend_employee_attrition.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

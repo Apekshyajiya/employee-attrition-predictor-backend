@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Predictor</title>
+</head>
+<body>
+    <h1>Employee Attrition Predictor</h1>
+    <form action="{% url 'result' %}">
+        <!-- No need for CSRF token with GET method, but include it if you use POST -->
+        {% csrf_token %}
+
+        <label for="DR">Daily Rate:</label>
+        <input type="number" required name="DR" id="DR"><br><br>
+
+        <label for="Ge">Gender:</label>
+        <input type="text" required name="Ge" id="Ge"><br><br>
+
+        <label for="HR">Hourly Rate:</label>
+        <input type="number" required name="HR" id="HR"><br><br>
+
+        <label for="JI">Job Involvement:</label>
+        <input type="number" required name="JI" id="JI"><br><br>
+
+        <label for="JL">Job Level:</label>
+        <input type="number" required name="JL" id="JL"><br><br>
+
+        <label for="JS">Job Satisfaction:</label>
+        <input type="number" required name="JS" id="JS"><br><br>
+
+        <label for="MS">Maritial Status:</label>
+        <input type="text" required name="MS" id="MS"><br><br>
+
+        <label for="MI">Monthly Income:</label>
+        <input type="number" required name="MI" id="MI"><br><br>
+
+        <label for="MR">Monthly Rate:</label>
+        <input type="number" required name="MR" id="MR"><br><br>
+
+        <label for="NCW">Num Companies Worked:</label>
+        <input type="number" required name="NCW" id="NCW"><br><br>
+
+        <label for="OT">OverTime:</label>
+        <input type="text" required name="OT" id="OT"><br><br>
+
+        <label for="PSH">Percent Salary Hike:</label>
+        <input type="number" required name="PSH" id="PSH"><br><br>
+        
+        <label for="PR">Performance rating:</label>
+        <input type="number" required name="PR" id="PR"><br><br>
+
+        <label for="TWY">totla working years:</label>
+        <input type="number" required name="TWY" id="TWY"><br><br>
+
+        <label for="WLB">Work Life Balance:</label>
+        <input type="number" required name="WLB" id="WLB"><br><br>
+
+        <label for="YAC">Years at company:</label>
+        <input type="number" required name="YAC" id="YAC"><br><br>
+
+        <label for="YCR">years in current role:</label>
+        <input type="number" required name="YCR" id="YCR"><br><br>
+
+        <label for="YLP">Years since last promotion:</label>
+        <input type="number" required name="YLP" id="YLP"><br><br>
+
+        <label for="YC">Years with Current Manager:</label>
+        <input type="number" required name="YC" id="YC"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if predictions %}
+        <h2>Prediction: {{ predictions }}</h2>
+    {% endif %}
+</body>
+</html>
